@@ -1,0 +1,93 @@
+1. Primitive data types cannot be used while initializing the collections.
+
+for eg: use of ArrayList<int> numbers = new ArrayList<int>() is wrong. 
+We need to specify ArrayList<Integer> as the collections are implemented using template 
+types and not primitive data types.
+
+2. Collections classes are grouped by interfaces.
+
+1. List Interface implements the following :
+	1. ArrayList - 	Normally if you do not specify number of list elements while initializing,
+					the list is initialized to 10.
+				   	Removing elements from the end of the arraylist is more faster than removing them from the beginning
+		   		   	This is becoz, removing from end just decrements the size of the list
+					But removing from beginning means the element is removed from the list and remaining elements are copied to the 
+					new location. == > Process is very slow
+					
+					The following are the basic methods mostly used: 
+						arrayList.add(arg0)
+						arrayList.get(index)
+						arrayList.remove(index)
+						arrayList.size() ==> Returns the size of the array list
+						
+	2. LinkedList - Uses the same methods as arrayList. List<T> interface implements LinkedList too 
+	
+	Where to use LinkedList & where to use ArrayList ---> if you want to remove elements in the end of a list 
+	use Array List.	If you want to remove elements from the beginning or middle of the list, then use LinkedList	
+	
+	ArrayLists manages  arrays internally
+	LinkedLists consists of elements where each element has a reference to next and prev elements.					
+ 
+ 	ArrayList took less time to add elements at the end of the list than the linked list coz in a linkedlist,
+ 	we need to traverse through every item and then get to the end of the list and then add the elements.
+ 	Whereas the arrayList can get the last element thru its index and justv insert a new element at the 
+ 	end of the list.
+ 	
+ 	When you need to add items to the beginning or middle of a list, always go in for the use of a LinkedList
+ 	as it has to just point the references to the new node being created which takes less time.
+ 	In case of arraylists, if an item has to be added at the beginning of the list, we need to move all 
+ 	the elements down and then insert the new element which takes quite a long time as shown in 
+ 	"LinkedListImplemenmtation.java" class.
+ 	
+ 	In case if you want to add an element somewhere near the end of the list, then go for using ArrayList coz these 
+ 	lists take less time to push the elements down by 1 and add a new element than traversing the whole linkedlist near 
+ 	to the end and then creating a reference to the new node.
+ 	
+ 	In a nutshell  use ArrayLists wherever possible but use linkedList only if you have to insert the elements in the beginning
+ 	or in the middle.
+
+ 2. Maps Interface:
+ 	Maps always exist in a Key Value pair.
+ 	You cannot add a duplicate key to a map.
+ 	1. HashMap : 
+		 	HashMap does not give the output in a sorted order.
+		 	To add a value to the hashmap - map.put(K,V)
+		 	To remove a value - map.remove(K,V)
+		 	Size of the hashmap - map.size()
+		 	To iterate a HashMap - for(Map.Entry<K,V> myVal : myMap.entrySet()){
+		 								myVal.getKey();
+		 								myVal.getValue();
+		 								}
+	
+	2. LinkedHashMap: 
+				Basically it is a HashMap but consists of doubly linkedList that connects all the elements  
+				So the elements stay in the stay order like you added.
+	3. TreeMap: 
+				Sorted Order of the given Key value pairs. 
+				Iterate through the key set and the keys&values are printed on a sorted order											
+
+3. Set Interface:
+	-Sets basically consist of unique elements.
+	-You can print out a set just using its variable name on syso
+	-Sets are basically optimized. We can use "contains' method to see if an element is actually present in it or not
+	- To check if set is empty "isEmpty()"
+	-"retainAll" gives the intersection of 2 sets -- used to find common elements between sets
+	-"removeAll" gives the difference between 2 sets -- used to find unique elements between 2 sets
+	There are 3 types of HashSet here:
+	1. HashSet- This does not maintain any order of the inserted elements.
+	2. LinkedHashSet - Maintains the order of the elements in the way you added them.
+	2. TreeSet- This set basically sorts its inputs. 
+	
+	
+	
+Additional Notes about Maps & Sets --
+- If you have custom objects and want to use them as a part of Sets/Maps, the maps/sets cannot determine if you are
+adding duplicate elements or not- Refer "CustomObjectsMapsAndSets" class.
+- In order to make them work, you need to implement the hashCode and equals function for your class and then run the code.
+- You will now see that the sets/maps will not contain the duplicate item occurring twice in them	
+
+
+COMPARATORS:
+
+
+	 	 
