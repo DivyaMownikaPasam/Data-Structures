@@ -23,3 +23,12 @@ hs_err_pid*
 *.ilk
 *.log
 *.index
+*.metadata
+*.Data Structures/.classpath
+*.Data Structures/.project
+*.Data Structures/.settings
+*.Data Structures/bin
+*.Data Structures/src/.classpath
+*.Data Structures/src/.project
+
+
