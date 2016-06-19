@@ -87,7 +87,44 @@ adding duplicate elements or not- Refer "CustomObjectsMapsAndSets" class.
 - You will now see that the sets/maps will not contain the duplicate item occurring twice in them	
 
 
-COMPARATORS:
+COMPARATORS: Refer SortingUsingComparators class
+
+-- Collections<T> is a super class to all the above interfaces. So if you have a method to which you should
+pass Set/List/Map as a parameter, then you can define an argument "Collection<String> collection" in the
+method definition.
+
+Class should implement Comparable in case you want to sort the TreeSet/TreeMaps in their Natural Order 
 
 
+QUEUES:
+1. It is a FIFO structure.
+2. Add elements to the TAIL and remove it from the HEAD.
+3. There are various number of implementations for Queue like - ArrayBlockingQueue, LinkedList, PriorityQueues and so on
+4. The ArrayBlockingQueue is similar to the implementation of a LinkedList but differs that it needs a 
+	size to be given while declaring it.
+/*
+		 * add- adds an element to the queue
+		 * 		if the queue is full, returns a IllegalStateException if you tryto add more elements.
+		 * offer- Also adds elements to the queue. it returns false if the queue is full an does not add the additional 
+		 * 		elements to the queue and no exception is given.
+		 *  	  But you can use it as if(q.offer(e) == true){
+		 *  									q.offer	(e);	
+		 * 						}
+		 * 
+		 * remove - removes the element from  the head of the queue. If queue is emopty and you try to remove from it, 
+		 * 			you get a NoSuchElementException thrown
+		 * poll - also removes the element from the head of the queue. If the queue is empty, it prints "null" 
+		 * 			when we try to remove the element.
+		 * 
+		 * element() -- Returns the HEAD element value from the queue. If queue is empty and you try to call element()
+		 * 				you would get a NoSuchElementException
+		 * peek() -- Returns the HEAD element value for the queue. If queue is empty and try to peek, you get a null
+		 * 			printed with no exception.
+		 *  
+		 */
+
+
+ITERATORS:
+Difference between for each and iterators is that you can modify the list while iterating through it.
+ListIterator also allows you to add to the list and access even the previous () element in that list
 	 	 
