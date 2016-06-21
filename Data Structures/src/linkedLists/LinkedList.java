@@ -160,6 +160,47 @@ public class LinkedList {
 		}
 		return searchResult;
 	}
+	/*
+	 * struct node* prev   = NULL;
+    struct node* current = *head_ref;
+    struct node* next;
+    while (current != NULL)
+    {
+        next  = current->next;  
+        current->next = prev;   
+        prev = current;
+        current = next;
+    }
+    *head_ref = prev;*/
+	
+	public Node reverseLinkedList(){
+		
+		if(head == null || head.next == null)
+			return head;
+		else{
+			Node current = head;
+			Node prevCurrent = null;
+			Node temp = null;
+					
+		
+			while(current.next != null){			
+				
+				temp = current.next;
+				
+				current.next = prevCurrent; // Point current node to previous node
+				prevCurrent = current; // Point prev current to current node
+				current = temp;					
+			}
+			
+			current.next = prevCurrent;
+			
+			head = current;
+			
+			return head;
+		}
+		
+	}
+	
 	
 	public static void main(String[] args) {
 		LinkedList list = new LinkedList();
@@ -175,6 +216,10 @@ public class LinkedList {
 		list.insertNode(9);
 		
 		System.out.println("The following is the built list: ");
+		list.printLinkedList();
+		
+		System.out.println("Reversed List is as follows: ");
+		list.reverseLinkedList();
 		list.printLinkedList();
 		
 		list.insertAtBeginning(0);		
