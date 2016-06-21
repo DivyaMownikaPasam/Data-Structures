@@ -10,7 +10,8 @@ public class LinkedList {
 	 * 4. Insert a node given the position
 	 * 5. Delete a node at a given position
 	 * 6. Sort Linked list 
-	 * 7. Search for a given number in a linked list     
+	 * 7. Search for a given number in a linked list 
+	 *     
 	 * 
 	 * */
 	
@@ -105,6 +106,7 @@ public class LinkedList {
 		else if(pos == 0){
 			Node current = head;
 			head = current.next;
+			size--;
 		}
 		else{
 			Node current = head;
@@ -116,6 +118,7 @@ public class LinkedList {
 				count++;				
 			}
 			prevCurrent.next = current.next;
+			size--;
 		}
 	}
 	
@@ -201,7 +204,56 @@ public class LinkedList {
 		
 	}
 	
-	
+	public Boolean isPalindrome(){
+		//Using slow and fast pointers
+		if(head == null || head.next == null)
+			return true;
+		
+		Node slow = head;
+		Node fast = head;
+		
+		//Doing the following will make sure your slow pointer points to the middle of the list
+		while(fast.next != null && fast.next.next !=null){
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+		
+		
+		Node secondHead = slow.next;
+		slow.next = null;
+		//Now reverse the second half of the list
+		
+		Node p1 =secondHead;
+		Node p2 = p1.next;
+		
+		while(p1 != null && p2!=null)
+		{
+			Node temp = p2.next;
+			p2.next = p1;
+			
+			p1 = p2;
+			
+			p2 = temp;
+		}
+		secondHead.next = null;
+		secondHead = p1;
+		
+		
+		//compare its value with first half and return true/fasle
+		Node current1 = head;
+		Node current2 = secondHead;
+		
+		while(current1 !=null && current2 != null){
+			if(current1.data != current2.data)
+				return false;
+			else{
+					current1 = current1.next;
+					current2 = current2.next;
+				}
+		}
+		
+		return true;
+	}
 	public static void main(String[] args) {
 		LinkedList list = new LinkedList();
 		
@@ -269,6 +321,10 @@ public class LinkedList {
 		{
 			System.out.println("Node is not present in list");
 		}
+		
+		
+		System.out.println("************** Check for palindrome***************");
+		System.out.println(list.isPalindrome());
 
 	}
 
