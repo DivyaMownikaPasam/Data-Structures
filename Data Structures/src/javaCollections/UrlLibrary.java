@@ -48,7 +48,7 @@ public class UrlLibrary implements Iterable<String>{
 
 	public Iterator<String> iterator() {
 		// TODO Auto-generated method stub
-		return new urlIterator(); // This returns the new iteratyor class for your super class
+		return new urlIterator(); // This returns the new iterator class for your super class
 	}
 
 }
