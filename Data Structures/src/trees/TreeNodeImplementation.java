@@ -177,6 +177,63 @@ public class TreeNodeImplementation {
 		 
 	}
 	
+	//The following function finds the next in-order successor in the BST
+	/*
+	 * Algo is as follows:
+	 * If right sub-tree is not null, then the next successor node will be the leftmost node in the right sub-tree
+	 * Now if right subtree is null,
+	 * 			If the node in question is on the left side of the ancestor node, then return the ancestor node.
+	 * 			Else if it is on the right side, then the node to be returned will be this nodes's ancestor's ancestor
+	 */
+	public TreeNode findNextSuccessor(TreeNode node, int data){
+		
+		if(node == null)
+			return null;
+		//So first find the node with this data. This will be the current node
+		TreeNode current = findTreeNode(node,data);
+		
+		if(current.right != null){
+			return findMinInRightSubTree(current.right);
+		}
+		else{
+			TreeNode ancestor = node;
+			TreeNode successor = null;
+			
+			while(ancestor != current){
+				if(current.data < ancestor.data){
+					successor = ancestor;
+					ancestor = ancestor.left;
+				}
+				else{
+					ancestor = ancestor.right;
+				}
+			}
+			return successor;
+		}
+		
+		
+	}
+	
+	public TreeNode findTreeNode(TreeNode node, int data){
+		if(node == null)
+			return null;
+		if(node.data == data)
+			return node;
+		else if(data< node.data)
+			return findTreeNode(node.left, data);
+		else
+			return findTreeNode(node.right, data);
+	}
+	
+	
+	public TreeNode findMinInRightSubTree(TreeNode node){
+		if(node == null)return null;
+		while(node.left !=null)
+			node = node.left;
+		return node;
+	}
+	
+	
 	public static void main(String[] args) {
 		
 		// Following creates a normal unbalanced binary tree and inserts node into it
@@ -242,7 +299,10 @@ public class TreeNodeImplementation {
 		System.out.println(balancedTree.checkIfBST(balancedTreeNode,Integer.MIN_VALUE,Integer.MAX_VALUE));
 		System.out.println(trees.checkIfBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE));
 
-		
+		//Find what is the next in-order successor in your tree
+		System.out.println("The next in-order node in the tree is:");
+		int resultNextSuccessor = ((trees.findNextSuccessor(root, 3)) == null)? -1 : (trees.findNextSuccessor(root, 3)).data ;
+		System.out.println(resultNextSuccessor);
 	}
 
 }
