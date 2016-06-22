@@ -12,6 +12,7 @@ import java.util.Queue;
  * 7. Check if a tree is balanced or not
  * 8. Breadth first search of a Binary tree or Print level wise all nodes of a binary tree   
  * 9. Height of a binary tree
+ * 10. To check if a given tree is a binary search tree or not.
  * 
  * */
 public class TreeNodeImplementation {
@@ -165,7 +166,16 @@ public class TreeNodeImplementation {
 		
 	}
 	
-	
+	public boolean checkIfBST(TreeNode node, int low, int high){
+		if(node == null)return true;
+		
+		if(node.data > low && node.data< high){
+			return checkIfBST(node.left, low, node.data) && checkIfBST(node.right, node.data, high);
+		}
+		else
+			return false;
+		 
+	}
 	
 	public static void main(String[] args) {
 		
@@ -228,6 +238,10 @@ public class TreeNodeImplementation {
 		//Breadth first traversal of a tree
 		balancedTree.breadthFirstSearch(balancedTreeNode);
 		
+		//Check if a given tree is a balanced binary search tree
+		System.out.println(balancedTree.checkIfBST(balancedTreeNode,Integer.MIN_VALUE,Integer.MAX_VALUE));
+		System.out.println(trees.checkIfBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE));
+
 		
 	}
 
