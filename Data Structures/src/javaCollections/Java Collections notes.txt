@@ -127,4 +127,42 @@ QUEUES:
 ITERATORS:
 Difference between for each and iterators is that you can modify the list while iterating through it.
 ListIterator also allows you to add to the list and access even the previous () element in that list
-	 	 
+
+
+HASMAP COLLISION THEORY :
+If two different objects have the same hashCode, what happens depends 
+on the output of equals. If key2.equals(key1), then (key1, val1) is 
+replaced with (key2, val2), else a new entry (key2, val2) is added to the same bucket of the hash map. 
+Please note that hashCode determines which bucket the key-val pair goes to 
+while equals determines whether the object exists on not. 
+A more interesting question would be "What happens if two objects that are équal' returns 
+different hash codes". In that case, they would hash to different buckets and hence will result in duplicate entries.
+
+
+
+down vote
+accepted
+A hashmap works like this (this is a little bit simplified, but it illustrates the basic mechanism):
+
+It has a number of "buckets" which it uses to store key-value pairs in. Each bucket has a unique number - 
+that's what identifies the bucket. When you put a key-value pair into the map, the hashmap will look at the hash 
+code of the key, and store the pair in the bucket of which the identifier is the hash code of the key. 
+For example: The hash code of the key is 235 -> the pair is stored in bucket number 235. 
+(Note that one bucket can store more then one key-value pair).
+
+When you lookup a value in the hashmap, by giving it a key, it will first look at the hash code of the key that you gave. 
+The hashmap will then look into the corresponding bucket, and then it will compare the key that you gave with the keys of 
+all pairs in the bucket, by comparing them with equals().
+
+Now you can see how this is very efficient for looking up key-value pairs in a map: by the hash code of the key the 
+hashmap immediately knows in which bucket to look, so that it only has to test against what's in that bucket.
+
+Looking at the above mechanism, you can also see what requirements are necessary on the hashCode() and equals() methods of keys:
+
+If two keys are the same (equals() returns true when you compare them), their hashCode() method must return the same number. 
+If keys violate this, then keys that are equal might be stored in different buckets, and the hashmap would not 
+be able to find key-value pairs (because it's going to look in the same bucket).
+If two keys are different, then it doesn't matter if their hash codes are the same or not. 
+They will be stored in the same bucket if their hash codes are the same, and in this case, 
+the hashmap will use equals() to tell them apart.
+ 	 	 
