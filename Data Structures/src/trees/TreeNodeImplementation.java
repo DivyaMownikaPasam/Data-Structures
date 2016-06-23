@@ -234,6 +234,46 @@ public class TreeNodeImplementation {
 	}
 	
 	
+	/*The following function determines the first common ancestor between nodes*/
+	/*1. This function determines the ancestor if it is a BST
+	 * 2. We assume that both nodes are in the tree
+	 */
+	public TreeNode firstAncestorBST(TreeNode node, TreeNode node1, TreeNode node2){
+		
+		if(node == null){
+			return null;
+		}
+		if(node1.data < node.data && node2.data < node.data){
+			//Both nodes exist in the left subtree
+			return firstAncestorBST(node.left, node1, node2);
+		}
+		if(node1.data > node.data && node2.data > node.data){
+			//Both nodes in right subtree
+			return firstAncestorBST(node.right, node1, node2);
+		}
+		
+		//If one node is in the left subtree and the other is in right subtree, then ancestor is always the root
+		return node;
+	}
+	
+	/*The following code determines the ancestor of 2 nodes in any Binary tree*/
+	public TreeNode firstAncestorAnyBinaryTree(TreeNode node, TreeNode node1, TreeNode node2){
+		if(node == null)
+			return null;
+		if(node1 == node || node2 == node)
+			return node;
+		
+		TreeNode left = firstAncestorAnyBinaryTree(node.left, node1, node2);
+		TreeNode right = firstAncestorAnyBinaryTree(node.right, node1, node2);
+		
+		
+		if(left !=null && right!=null)// If either of nodes in a different subtree
+			return node;
+		
+		return (left != null)? left:right; // If they are left subtree return left else return right
+	}
+	
+	
 	public static void main(String[] args) {
 		
 		// Following creates a normal unbalanced binary tree and inserts node into it
@@ -303,6 +343,12 @@ public class TreeNodeImplementation {
 		System.out.println("The next in-order node in the tree is:");
 		int resultNextSuccessor = ((trees.findNextSuccessor(root, 3)) == null)? -1 : (trees.findNextSuccessor(root, 3)).data ;
 		System.out.println(resultNextSuccessor);
+		
+		
+		//Find the common ancestor for 2 nodes
+		System.out.println("The first/lowest common ancestor for a BST with 2 nodes are as follows: ");
+		TreeNode resultAncestor = balancedTree.firstAncestorBST(balancedTreeNode,new TreeNode(1), new TreeNode(3));
+		System.out.println(resultAncestor.data);
 	}
 
 }
