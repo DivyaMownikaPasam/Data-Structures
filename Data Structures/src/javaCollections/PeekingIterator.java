@@ -1,4 +1,4 @@
-package codingQuestions;
+package javaCollections;
 
 import java.util.Iterator;
 import java.util.LinkedList;

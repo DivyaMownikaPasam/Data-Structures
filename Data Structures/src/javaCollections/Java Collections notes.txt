@@ -139,9 +139,6 @@ A more interesting question would be "What happens if two objects that are équal
 different hash codes". In that case, they would hash to different buckets and hence will result in duplicate entries.
 
 
-
-down vote
-accepted
 A hashmap works like this (this is a little bit simplified, but it illustrates the basic mechanism):
 
 It has a number of "buckets" which it uses to store key-value pairs in. Each bucket has a unique number - 

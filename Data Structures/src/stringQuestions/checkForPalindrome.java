@@ -1,4 +1,4 @@
-package codingQuestions;
+package stringQuestions;
 import linkedLists.LinkedList;
 import linkedLists.Node;
 

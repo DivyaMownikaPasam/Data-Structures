@@ -1,4 +1,4 @@
-package codingQuestions;
+package stringQuestions;
 
 import java.util.ArrayList;
 import java.util.HashSet;
