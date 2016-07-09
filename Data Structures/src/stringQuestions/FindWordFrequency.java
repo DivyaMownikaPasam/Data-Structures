@@ -39,8 +39,8 @@ public class FindWordFrequency {
 		List<Map.Entry<String, Integer>> list = new LinkedList<Map.Entry<String,Integer>>(myMap.entrySet());
 		Collections.sort(list,new Comparator<Map.Entry<String, Integer>>(){
 
-			public int compare(Entry<String, Integer> o1,
-					Entry<String, Integer> o2) {
+			public int compare(Map.Entry<String, Integer> o1,
+					Map.Entry<String, Integer> o2) {
 				// TODO Auto-generated method stub
 				return -(o1.getValue()).compareTo(o2.getValue());
 			}
@@ -56,7 +56,7 @@ public class FindWordFrequency {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String str = "This is a repreated sentence. This is madness. This is creepy. Why is it dark?";
+		String str = "This is a repeated sentence. This is madness. This is creepy. Why is it dark?";
 		printWordFrequencyDescendingOrder(str);
 		
 		
