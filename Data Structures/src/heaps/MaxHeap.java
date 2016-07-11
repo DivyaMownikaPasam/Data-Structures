@@ -9,7 +9,7 @@ public class MaxHeap {
 	private int size;
 	private int maxSize;
 	private static final int front = 1;
-
+	private static int total;
 	
 	public MaxHeap(int maxSize){
 		this.maxSize = maxSize;
@@ -109,16 +109,39 @@ public void printHeap()
     	return max;    	
     }
     
-    public Set<Integer> sortHeap(){  
-    	Set<Integer> set = new LinkedHashSet<Integer>();
+    public  void sort(int arr[]){ 
+    	total = arr.length - 1;
+    	for(int i= total/2; i>=0; i--){
+    		sortHeapify(arr,i);
+    	}   	
     	
-    	while(size >= 1){
-    		int max = removeMaxNode();
-    		//System.out.print(max + " ");
-    		set.add(max);
+    	for(int i= total; i>0; i--){
+    		swapForSort(arr, 0, i);
+    		total--;
+    		sortHeapify(arr, 0);
     	}
-    	return set;
     	
+    	
+    }
+    
+    public void sortHeapify(int arr[], int pos){
+    	int leftPos = leftChildPos(pos);
+    	int rightPos = rightChildPos(pos);
+    	int greaterPos = pos;
+    	if(leftPos <= total && arr[leftPos] > arr[greaterPos])
+    		greaterPos = leftPos;
+    	if(rightPos <= total && arr[rightPos] > arr[greaterPos])
+    		greaterPos = rightPos;
+    	if(greaterPos != pos){
+    		swapForSort(arr, pos, greaterPos);
+    		sortHeapify(arr, greaterPos);
+    	}
+    }
+    
+    public void swapForSort(int arr[],int pos1, int pos2){
+    	int temp = arr[pos1];
+    	arr[pos1] = arr[pos2];
+    	arr[pos2] = temp;
     }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -153,8 +176,14 @@ public void printHeap()
 	        maxHeap.printHeap();	        
 	        System.out.println("The max Node removed is: " + maxNode);
 	        
-	        System.out.println(maxHeap.sortHeap());
+	       //Given an array, do heap sort on it:
 	        
+	        int arr[] = {3,2,1,5,4};
+	        maxHeap.sort(arr);
+	        System.out.println("The sorted array is: ");
+	       for(int i=0; i<arr.length; i++){
+	    	   System.out.print(arr[i] + " ");
+	       }
 	}
 
 }
