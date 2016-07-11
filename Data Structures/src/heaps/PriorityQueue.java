@@ -1,7 +1,7 @@
 package heaps;
 
 public class PriorityQueue {
-
+	
 	//Define a class called Task which has a job name and its priority listed.
 	class Task{
 		String jobName;
@@ -22,7 +22,7 @@ public class PriorityQueue {
 			private Task[]heap;
 			private int maxSize;
 			private int size;
-			
+		
 			public PriorityQueue(int maxSize){
 				this.maxSize = maxSize + 1;
 				this.heap = new Task[this.maxSize];
@@ -94,7 +94,7 @@ public class PriorityQueue {
 				int rightPos = 2*pos + 1;
 				int grt = pos;
 				if(leftPos <= size && heap[leftPos].priority > heap[grt].priority)
-					grt = rightPos;
+					grt = leftPos;
 				if(rightPos <= size && heap[rightPos].priority > heap[grt].priority)
 					grt = rightPos;
 				if(grt != pos){
@@ -102,16 +102,36 @@ public class PriorityQueue {
 					heapify(grt);
 				}
 			}
+			public void sortbasedonPriotity(){				
+				int total = size;
+				for(int i= size/2; i>=1; i--){
+					heapify(i);
+				}
+				for(int i= size; i>1;i--){
+					swap(1,i);
+					size--;
+					heapify(1);					
+				}
+				//To print sorted array based on priority
+				for(int i=total; i>=1; i--){
+					System.out.println(heap[i]);
+				}
+			}
+			
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		PriorityQueue queue = new PriorityQueue(3);
+		PriorityQueue queue = new PriorityQueue(4);
 		queue.insertIntoQueue("A", 1);
 		queue.insertIntoQueue("B", 10);
 		queue.insertIntoQueue("C", 15);
+		queue.insertIntoQueue("D", 100);
 		queue.printQueue();
 		System.out.println("*****************************************");
 		queue.remove();
 		queue.printQueue();
+		System.out.println("*******************************************");
+		queue.sortbasedonPriotity();
+		//queue.printQueue();
 	}
 
 }
