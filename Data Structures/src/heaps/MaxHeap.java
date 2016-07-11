@@ -5,13 +5,14 @@ public class MaxHeap {
 	private int[] heap;
 	private int size;
 	private int maxSize;
-	private static final int FRONT = 1;
+	private static final int front = 1;
 
 	
 	public MaxHeap(int maxSize){
 		this.maxSize = maxSize;
 		this.size = 0;		
 		this.heap = new int[this.maxSize+1];
+		//heap[0] is always considered to be a max integer value for convenience
 		this.heap[0] = Integer.MAX_VALUE;
 	}
 	
@@ -36,6 +37,10 @@ public class MaxHeap {
 	public void insert(int node){
 		heap[++size] = node;
 		int current = size;
+		/* The following condition will check if the insertIntoHeaped element is less or greater to
+		 * to the max heap/1st element in the array.
+		 * If the insertIntoHeaped element is large then we swap it and update the size to parent's position element.
+		 */
 		while(heap[parentPos(current)] < heap[current]){
 			swap(parentPos(current), current);
 			current = parentPos(current);
@@ -46,9 +51,15 @@ public void printHeap()
     {
         for (int i = 1; i <= size / 2; i++ )
         {
-            System.out.print(" PARENT : " + heap[i] + " LEFT CHILD : " + heap[2*i]
-                  + " RIGHT CHILD :" + heap[2 * i  + 1]);
-            System.out.println();
+            System.out.print(" Parent Node : " + heap[i]);
+            
+            System.out.print(" Left Child : " + heap[2*i]);
+            if(2 * i  + 1 <= size)
+            	 System.out.print(" Right Child : " + heap[2*i + 1]);   
+            else{
+            	System.out.print(" Right Child : null");
+            }
+            System.out.println("");
         }
     }
 	
@@ -87,9 +98,22 @@ public void printHeap()
         }
     }
 	
+    public int removeMaxNode(){
+    	int max = heap[front];
+    	heap[front] = heap[size]; // Assign the last node to the front after removing it 
+    	size--; // Decrement the size of the array as we have removed an element
+    	maxHeapify(front); // Now heapify the whole array to build the heap again after removal    	
+    	return max;
+
+    	
+    }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		  MaxHeap maxHeap = new MaxHeap(15);
+		  MaxHeap maxHeap = new MaxHeap(9);
+		  /*maxHeap.insert(1);
+		  maxHeap.insert(2);
+		  maxHeap.insert(3);*/
+
 	        maxHeap.insert(512);
 	        maxHeap.insert(7);
 	        maxHeap.insert(2);
@@ -100,12 +124,23 @@ public void printHeap()
 	        maxHeap.insert(41);
 	        maxHeap.insert(3);
 	        
+	        System.out.println("Elements after insert: ");
 	        maxHeap.printHeap();
 	        
-	        System.out.println("*******************************************");
-	        maxHeap.maxHeap();
-	 
+	        System.out.println("");
+	        
+	        System.out.println("Elements after heapify: ");
+	        maxHeap.maxHeap();	 
 	        maxHeap.printHeap();
+	        
+	        System.out.println("");
+	        System.out.println("Heap after removal: ");
+	        int maxNode  = maxHeap.removeMaxNode();
+	        //maxHeap.removeMaxNode();
+	        maxHeap.printHeap();
+	        
+	        System.out.println("The max Node removed is: " + maxNode);
+	        
 	}
 
 }
