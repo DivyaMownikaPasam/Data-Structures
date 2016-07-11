@@ -1,5 +1,8 @@
 package heaps;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 public class MaxHeap {
 	
 	private int[] heap;
@@ -74,7 +77,7 @@ public void printHeap()
 	  
     private void maxHeapify(int pos)
     {
-        if (!isLeaf(pos))
+    if (!isLeaf(pos) && size > 1)
         { 
             if ( heap[pos] < heap[leftChildPos(pos)]  || heap[pos] < heap[rightChildPos(pos)])
             {
@@ -103,8 +106,18 @@ public void printHeap()
     	heap[front] = heap[size]; // Assign the last node to the front after removing it 
     	size--; // Decrement the size of the array as we have removed an element
     	maxHeapify(front); // Now heapify the whole array to build the heap again after removal    	
-    	return max;
-
+    	return max;    	
+    }
+    
+    public Set<Integer> sortHeap(){  
+    	Set<Integer> set = new LinkedHashSet<Integer>();
+    	
+    	while(size >= 1){
+    		int max = removeMaxNode();
+    		//System.out.print(max + " ");
+    		set.add(max);
+    	}
+    	return set;
     	
     }
 	public static void main(String[] args) {
@@ -137,9 +150,10 @@ public void printHeap()
 	        System.out.println("Heap after removal: ");
 	        int maxNode  = maxHeap.removeMaxNode();
 	        //maxHeap.removeMaxNode();
-	        maxHeap.printHeap();
-	        
+	        maxHeap.printHeap();	        
 	        System.out.println("The max Node removed is: " + maxNode);
+	        
+	        System.out.println(maxHeap.sortHeap());
 	        
 	}
 
