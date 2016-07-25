@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /*
- * The folowing function determines word frequency in a sentence;
+ * The following function determines word frequency in a sentence;
  * This is done first by getting the words in a string array.
  * Put them into a HashMap by incrementing the count
  * Now add this HashMap to a linkedlist so that we can sort it using Collections framework and implement a Comparator
