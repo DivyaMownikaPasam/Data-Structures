@@ -39,6 +39,9 @@ public class MatchBrackets {
 		String brackets= "(()){()}";
 		System.out.println(areBracketsMatching(brackets));
 		
+		String brackets2 = "(({))()}";
+		System.out.println(areBracketsMatching(brackets2));
+		
 	}
 
 }

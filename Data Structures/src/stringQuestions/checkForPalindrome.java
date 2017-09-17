@@ -58,6 +58,7 @@ public class checkForPalindrome {
 		list.insertNode(1);
 		list.insertNode(0);
 		list.insertNode(2);
+		list.insertNode(6);
 		list.insertNode(1);
 		list.insertNode(0);
 		list.insertNode(1);

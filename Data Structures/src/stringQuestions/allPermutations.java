@@ -7,7 +7,7 @@ public class allPermutations {
 
 	
 	public static void main(String[] args) {
-		String str = "overlappingproblems";
+		String str = "8674";
 		getAllPermutations(str);	
 		
 	}

@@ -76,7 +76,7 @@ public class KthLargestElementInArray {
 		int [] num = {55,1,100,40,10,240,3};
 		//int [] num = {3,2,1,5,6,4};
 
-		int k = 2;
+		int k = 6;
 		
 		System.out.println("*********************Method 2:*******************************");		
 		int result = findKthLargestElement(num, 0, num.length-1, num.length-k+1);

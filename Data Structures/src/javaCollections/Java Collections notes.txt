@@ -30,7 +30,7 @@ types and not primitive data types.
  
  	ArrayList took less time to add elements at the end of the list than the linked list coz in a linkedlist,
  	we need to traverse through every item and then get to the end of the list and then add the elements.
- 	Whereas the arrayList can get the last element thru its index and justv insert a new element at the 
+ 	Whereas the arrayList can get the last element thru its index and just insert a new element at the 
  	end of the list.
  	
  	When you need to add items to the beginning or middle of a list, always go in for the use of a LinkedList
@@ -68,7 +68,7 @@ types and not primitive data types.
 
 3. Set Interface:
 	-Sets basically consist of unique elements.
-	-You can print out a set just using its variable name on syso
+	-You can print out a set just using its variable name on sysout
 	-Sets are basically optimized. We can use "contains' method to see if an element is actually present in it or not
 	- To check if set is empty "isEmpty()"
 	-"retainAll" gives the intersection of 2 sets -- used to find common elements between sets
@@ -104,14 +104,14 @@ QUEUES:
 	size to be given while declaring it.
 /*
 		 * add- adds an element to the queue
-		 * 		if the queue is full, returns a IllegalStateException if you tryto add more elements.
+		 * 		if the queue is full, returns a IllegalStateException if you try to add more elements.
 		 * offer- Also adds elements to the queue. it returns false if the queue is full an does not add the additional 
 		 * 		elements to the queue and no exception is given.
 		 *  	  But you can use it as if(q.offer(e) == true){
 		 *  									q.offer	(e);	
 		 * 						}
 		 * 
-		 * remove - removes the element from  the head of the queue. If queue is emopty and you try to remove from it, 
+		 * remove - removes the element from  the head of the queue. If queue is empty and you try to remove from it, 
 		 * 			you get a NoSuchElementException thrown
 		 * poll - also removes the element from the head of the queue. If the queue is empty, it prints "null" 
 		 * 			when we try to remove the element.

@@ -1,6 +1,6 @@
 package stringQuestions;
 
-public class StringReversal {
+public class StringReversal2 {
 
 	public static char[] reversalOfString(char[] str){
 		
@@ -36,12 +36,16 @@ public class StringReversal {
 		return str;
 	}
 	
-	public static String reverseStringRecursion(String str){
-	if ((str == null) || str.length() <=1)
-	return str;
-	else{
-	return (str.substring(1) + str.charAt(0));
-	}
+	 public static void reverseStringRecursion(String str)
+	    {
+	        if ((str==null)||(str.length() <= 1))
+	           System.out.println(str);
+	        else
+	        {
+	            System.out.print(str.charAt(str.length()-1));
+	            reverseStringRecursion(str.substring(0,str.length()-1));
+	        }
+	    
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -51,8 +55,9 @@ public class StringReversal {
 		for(int i=0; i<result.length; i++){
 			System.out.print(result[i]);
 		}
-		
-		System.out.println(reverseStringRecursion(str));
+		System.out.println("");
+		reverseStringRecursion(str);
+		//System.out.println(reverseStringRecursion(str));
 	}
 
 }

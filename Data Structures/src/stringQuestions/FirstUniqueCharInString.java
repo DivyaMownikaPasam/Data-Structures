@@ -16,7 +16,7 @@ public class FirstUniqueCharInString {
 	public static Character findFirstUnique(String string){
 		
 		Map<Character,Integer> map = new LinkedHashMap<Character,Integer>();
-		string = string.toLowerCase();
+		//string = string.toLowerCase();
 		for(int i=0; i<string.length();i++){
 			char c = string.charAt(i);
 			
@@ -57,7 +57,7 @@ public class FirstUniqueCharInString {
 	
 	public static Character firstUniqueCharac2(String string){
 		
-		string = string.toLowerCase();
+		//string = string.toLowerCase();
 		Set<Character> repeating = new HashSet<Character>();
 		List<Character> nonRepeating = new ArrayList<Character>();
 		
@@ -80,14 +80,14 @@ public class FirstUniqueCharInString {
 		
 		if(nonRepeating.size() == 0)
 			return null;
-		else			
+		else			 
 			return nonRepeating.get(0);
 		
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		String input = "I am Nikitha Venugopal";
+		String input = "i ,a&m ,Nikitha Venugopal";
 		System.out.println("Using Linked HashMap");
 		System.out.println(findFirstUnique(input));
 		System.out.println("Using Set & Array List");

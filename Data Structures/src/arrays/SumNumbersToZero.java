@@ -17,7 +17,7 @@ import java.util.Set;
  * 					3, -2, -1
  * 					3, 0, -3
  * 					3, 0, -3
- * 
+ *  
  */
 public class SumNumbersToZero {
 	
